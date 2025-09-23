@@ -1,2 +1,2 @@
 # pyboids
-py boids demo and reaserch
+pygame boids demo and reaserch
