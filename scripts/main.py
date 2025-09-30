@@ -11,10 +11,10 @@ def initialise(width, height):
 
   pygame.init()
 
-  
-
   screen = pygame.display.set_mode((width, height))
   pygame.display.set_caption('Boids Demo')
+
+  
   
   return width, height, screen
 
@@ -43,9 +43,9 @@ def distVectors(vectors):
 
 def main():
 
-  (width, height) = (1500, 980)
+  (width, height) = (400, 300)
   background_colour = (10,15,60)
-  unitNum = 250
+  unitNum = 100
   unitList = []
   distList = []
   #seperation Power and Radius
@@ -55,9 +55,16 @@ def main():
   cohRad = 200
   aliPow = .1
   aliRad = 100
+  sliderHeight = 30
+  sliderOffset = 25
+
 
   initParams = initialise(width, height)
   screen = initParams[2]
+
+  #sepPowSlider = Slider(screen, sliderOffset, height - (sliderOffset*2 + sliderHeight), width-(sliderOffset*2), sliderHeight, max=10, min=0, step=0.1, handleRadius=5)
+  #sepPowSliderTex = TextBox(screen, sliderOffset, height - (sliderOffset*2 + sliderHeight)*2, width-(sliderOffset*2), sliderHeight, fontSize=30)
+  #sepPowSliderTex.disable()
 
   clock = pygame.time.Clock()
   genUnits(unitNum, unitList, width, height)
@@ -72,6 +79,10 @@ def main():
         pygame.quit()
         exit()
     
+
+    #sepPowSliderTex.setText(sepPowSlider.getValue())
+
+
     distList = distVectors([unit.position for unit in unitList])
 
     for unit in unitList:
@@ -83,7 +94,7 @@ def main():
 
     for unit in unitList:
       unit.display(screen)
-    
+    pygame_widgets.update(event)
     pygame.display.flip()
     clock.tick(60)
 
