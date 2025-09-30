@@ -1,6 +1,9 @@
 import pygame
+import pygame_widgets
 import random
 import numpy as np
+from pygame_widgets.slider import Slider
+from pygame_widgets.textbox import TextBox
 
 from unit import unit
 
